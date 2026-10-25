@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Operations | HCM Lite</title>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <main class="attendance-page">
+    <nav class="people-topbar">
+      <a class="brand" href="admin.html">
+        <span class="brand-mark">H</span>
+        <span><strong>HCM Lite</strong><small>Attendance Operations</small></span>
+      </a>
+      <div class="people-top-actions">
+        <span class="status status-present">● Operations</span>
+        <a class="btn btn-secondary" href="admin.html"><i data-lucide="arrow-left"></i> Dashboard</a>
+      </div>
+    </nav>
+
+    <section class="attendance-content">
+      <header class="attendance-heading">
+        <div>
+          <p class="eyebrow">PEOPLE · PRESENCE · PROGRESS</p>
+          <h1>Attendance <span class="heading-dot">Center.</span></h1>
+          <p class="muted">A clear view of today's team activity.</p>
+        </div>
+        <div class="attendance-date">
+          <span class="muted">TODAY</span>
+          <strong id="attendance-today">Loading date...</strong>
+          <span id="live-clock" aria-live="off">--:--:--</span>
+        </div>
+      </header>
+
+      <section class="attendance-metrics">
+        <article class="card attendance-metric">
+          <span class="people-stat-icon blue"><i data-lucide="users"></i></span>
+          <p class="muted">Team members</p>
+          <h2 id="att-total">0</h2>
+        </article>
+        <article class="card attendance-metric">
+          <span class="people-stat-icon teal"><i data-lucide="check-circle-2"></i></span>
+          <p class="muted">Checked in</p>
+          <h2 id="att-present">0</h2>
+        </article>
+        <article class="card attendance-metric">
+          <span class="people-stat-icon purple"><i data-lucide="clock-4"></i></span>
+          <p class="muted">Late arrivals</p>
+          <h2 id="att-late">0</h2>
+        </article>
+        <article class="card attendance-metric">
+          <span class="people-stat-icon blue"><i data-lucide="user-x"></i></span>
+          <p class="muted">Not checked in</p>
+          <h2 id="att-missing">0</h2>
+        </article>
+      </section>
+
+      <section class="attendance-layout">
+        <article class="card attendance-action-card">
+          <p class="eyebrow">ATTENDANCE ACTION</p>
+          <h2>Record your presence</h2>
+          <p class="muted">Select an employee to record attendance in this demo.</p>
+
+          <form id="attendance-form">
+            <div class="form-group">
+              <label class="form-label" for="attendance-employee">Team member</label>
+              <select class="form-control" id="attendance-employee" required>
+                <option value="">Select an employee</option>
+              </select>
+            </div>
+
+            <div class="attendance-selected" id="selected-employee-card">
+              <span class="attendance-avatar"><i data-lucide="user"></i></span>
+              <div>
+                <strong id="selected-employee-name">No employee selected</strong>
+                <p class="muted" id="selected-employee-department">Choose a team member above</p>
+              </div>
+            </div>
+
+            <div class="attendance-current-status">
+              <span class="muted">Today's status</span>
+              <strong id="selected-attendance-status">Not checked in</strong>
+            </div>
+
+            <button class="btn btn-primary attendance-main-button" type="button" id="check-in-button" disabled>
+              Check in <i data-lucide="arrow-right"></i>
+            </button>
+
+            <button class="btn btn-secondary attendance-main-button" type="button" id="check-out-button" disabled>
+              Check out
+            </button>
+
+            <p id="attendance-message" role="status" class="muted"></p>
+          </form>
+
+          <div class="attendance-rule-note">
+            <strong>Attendance rules</strong>
+            <p class="muted">Office start: <span id="office-start-label">09:00</span></p>
+            <p class="muted">Grace period: <span id="grace-period-label">15</span> minutes</p>
+            <p class="muted">Under 5 hours: half-day</p>
+          </div>
+        </article>
+
+        <article class="card attendance-records-card">
+          <div class="people-section-heading">
+            <div>
+              <p class="eyebrow">LIVE TEAM OVERVIEW</p>
+              <h2>Today's records</h2>
+              <p class="muted">Attendance activity recorded on this device.</p>
+            </div>
+            <span class="people-count" id="attendance-record-count">0 records</span>
+          </div>
+
+          <div class="people-toolbar">
+            <div class="people-search">
+              <i data-lucide="search"></i>
+              <input id="attendance-search" type="search" aria-label="Search attendance" placeholder="Search employees...">
+            </div>
+            <select id="attendance-status-filter" class="form-control" aria-label="Filter attendance status">
+              <option value="">All statuses</option>
+              <option value="present">Present</option>
+              <option value="late">Late</option>
+              <option value="half-day">Half-day</option>
+              <option value="checked-out">Checked out</option>
+            </select>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Team member</th>
+                  <th>Check-in</th>
+                  <th>Check-out</th>
+                  <th>Duration</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="attendance-table-body"></tbody>
+            </table>
+          </div>
+
+          <div class="people-empty" id="attendance-empty" hidden>
+            <div class="people-empty-icon"><i data-lucide="clock"></i></div>
+            <h3 id="attendance-empty-title">No attendance yet</h3>
+            <p class="muted" id="attendance-empty-description">Check in an employee to start today's attendance records.</p>
+          </div>
+        </article>
+      </section>
+
+      <footer class="page-footer">
+        HCM Lite · Attendance Operations
+      </footer>
+    </section>
+  </main>
+
+  <script src="../js/Auth.js"></script>
+  <script>auth.requireAuth();</script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/attendance.js"></script>
+  <script src="../js/theme.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave Management | HCM Lite</title>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+  <div class="leave-page">
+
+    <aside class="leave-sidebar">
+      <a class="leave-brand" href="admin.html">
+        <span class="leave-brand-icon">H</span>
+        <span>
+          <strong>HCM Lite</strong>
+          <small>People · Presence · Progress</small>
+        </span>
+      </a>
+
+      <div class="leave-nav-label">WORKSPACE</div>
+
+      <nav class="leave-nav">
+        <a href="admin.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+        <a href="employees.html"><i data-lucide="users"></i> People Studio</a>
+        <a href="employee.html"><i data-lucide="clock"></i> Attendance Center</a>
+        <a class="active" href="leaves.html"><i data-lucide="calendar-off"></i> Leave Management</a>
+        <a href="payslip.html"><i data-lucide="receipt"></i> Payroll</a>
+        <a href="settings.html"><i data-lucide="settings"></i> Settings</a>
+      </nav>
+
+      <div class="leave-sidebar-bottom">
+        <div class="leave-help-icon"><i data-lucide="sparkles"></i></div>
+        <strong>People first.</strong>
+        <p>Organize your team, one day at a time.</p>
+        <span>HCM LITE · DEMO VERSION</span>
+      </div>
+    </aside>
+
+    <main class="leave-main">
+      <header class="leave-topbar">
+        <div>
+          <div class="leave-breadcrumb">Workspace / Leave Management</div>
+          <div class="leave-topbar-title">People Operations</div>
+        </div>
+
+        <button type="button" class="btn btn-secondary leave-theme-button" id="theme-toggle" aria-label="Toggle dark mode">
+          <i data-lucide="moon"></i> Theme
+        </button>
+      </header>
+
+      <div class="leave-content">
+
+        <section class="leave-heading">
+          <div>
+            <div class="leave-eyebrow">
+              <span class="leave-eyebrow-dot"></span>
+              PEOPLE · BALANCE · WELLBEING
+            </div>
+            <h1>Leave Management<span class="leave-heading-period">.</span></h1>
+            <p>Manage time off, review requests, and keep your team in sync.</p>
+          </div>
+
+          <div class="leave-date-chip">
+            <i data-lucide="calendar"></i>
+            <span id="leave-today">Today's overview</span>
+          </div>
+        </section>
+
+        <section class="leave-stats" aria-label="Leave request summary">
+          <article class="leave-stat-card">
+            <div class="leave-stat-top">
+              <span class="leave-stat-label">Total requests</span>
+              <span class="leave-stat-icon leave-icon-blue"><i data-lucide="file-text"></i></span>
+            </div>
+            <div class="leave-stat-number" id="leave-total">0</div>
+            <div class="leave-stat-note">All submitted requests</div>
+          </article>
+
+          <article class="leave-stat-card">
+            <div class="leave-stat-top">
+              <span class="leave-stat-label">Pending review</span>
+              <span class="leave-stat-icon leave-icon-amber"><i data-lucide="clock"></i></span>
+            </div>
+            <div class="leave-stat-number" id="leave-pending">0</div>
+            <div class="leave-stat-note">Awaiting a decision</div>
+          </article>
+
+          <article class="leave-stat-card">
+            <div class="leave-stat-top">
+              <span class="leave-stat-label">Approved</span>
+              <span class="leave-stat-icon leave-icon-green"><i data-lucide="check-circle-2"></i></span>
+            </div>
+            <div class="leave-stat-number" id="leave-approved">0</div>
+            <div class="leave-stat-note">Requests accepted</div>
+          </article>
+
+          <article class="leave-stat-card">
+            <div class="leave-stat-top">
+              <span class="leave-stat-label">Rejected</span>
+              <span class="leave-stat-icon leave-icon-red"><i data-lucide="x-circle"></i></span>
+            </div>
+            <div class="leave-stat-number" id="leave-rejected">0</div>
+            <div class="leave-stat-note">Requests declined</div>
+          </article>
+        </section>
+
+        <section class="leave-form-card" id="leave-form-panel">
+          <div class="leave-section-heading">
+            <div class="leave-section-icon"><i data-lucide="plus"></i></div>
+            <div>
+              <h2>New leave application</h2>
+              <p>Enter the details to prepare a leave request.</p>
+            </div>
+          </div>
+
+          <form id="leave-form">
+            <div class="leave-form-grid">
+              <div class="form-group">
+                <label class="form-label" for="leave-employee">Team member *</label>
+                <select class="form-control" id="leave-employee" name="employeeId" required>
+                  <option value="">Select an employee</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="leave-type">Leave type *</label>
+                <select class="form-control" id="leave-type" name="leaveType" required>
+                  <option value="">Select leave type</option>
+                  <option value="Casual">Casual leave</option>
+                  <option value="Sick">Sick leave</option>
+                  <option value="Annual">Annual leave</option>
+                  <option value="Emergency">Emergency leave</option>
+                  <option value="Unpaid">Unpaid leave</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="leave-start">Start date *</label>
+                <input class="form-control" type="date" id="leave-start" name="startDate" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="leave-end">End date *</label>
+                <input class="form-control" type="date" id="leave-end" name="endDate" required>
+              </div>
+
+              <div class="form-group leave-reason-group">
+                <label class="form-label" for="leave-reason">Reason for leave *</label>
+                <textarea class="form-control leave-reason" id="leave-reason" name="reason" rows="3" maxlength="500" placeholder="Briefly explain reason..." required></textarea>
+              </div>
+            </div>
+
+            <div class="leave-form-actions">
+              <button type="reset" class="btn btn-secondary">Clear form</button>
+              <button type="submit" class="btn btn-primary">Submit application <i data-lucide="arrow-right"></i></button>
+            </div>
+          </form>
+        </section>
+
+        <section class="leave-requests-card">
+          <div class="leave-requests-header">
+            <div>
+              <h2>Leave requests</h2>
+              <p>Review and manage your team's time-off applications.</p>
+            </div>
+            <span class="leave-record-count" id="leave-record-count">0 requests</span>
+          </div>
+
+          <div class="leave-toolbar">
+            <div class="leave-search-wrap">
+              <i data-lucide="search"></i>
+              <input type="search" id="leave-search" placeholder="Search team members...">
+            </div>
+
+            <select id="leave-status-filter" class="form-control leave-filter">
+              <option value="">All statuses</option>
+              <option value="pending">Pending</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+            </select>
+          </div>
+
+          <div class="table-wrap leave-table-wrap">
+            <table class="data-table leave-table">
+              <thead>
+                <tr>
+                  <th>TEAM MEMBER</th>
+                  <th>LEAVE TYPE</th>
+                  <th>DATES</th>
+                  <th>DAYS</th>
+                  <th>STATUS</th>
+                  <th>ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody id="leave-table-body">
+                <tr><td colspan="6"><div class="leave-loading">Your leave requests will appear here.</div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <footer class="leave-page-footer">
+          © HCM Lite · HR Management Platform
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/Auth.js"></script>
+  <script>auth.requireAuth();</script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/leave.js"></script>
+  <script src="../js/theme.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

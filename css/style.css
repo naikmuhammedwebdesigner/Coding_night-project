@@ -1,0 +1,501 @@
+/* ========================================
+   HCM LITE — NEXUS DESIGN SYSTEM
+   File: css/style.css
+======================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Brand colors */
+  --brand-navy: #0b1730;
+  --brand-blue: #315eed;
+  --brand-teal: #14b8a6;
+
+  /* Light theme */
+  --bg: #f5f7fc;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --text: #101828;
+  --text-muted: #475467;
+  --border: #e4e9f2;
+
+  /* Status colors */
+  --success: #15803d;
+  --warning: #b45309;
+  --danger: #dc2626;
+
+  /* Shape and spacing */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Effects */
+  --shadow-card: 0 4px 18px rgb(16 24 40 / 5%);
+  --transition: 180ms ease;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0b1120;
+  --surface: #151f32;
+  --surface-raised: #1c2940;
+  --text: #f1f5f9;
+  --text-muted: #b0bcd0;
+  --border: #2b3950;
+
+  --brand-blue: #7c9bff;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #f87171;
+
+  --shadow-card: 0 4px 18px rgb(0 0 0 / 15%);
+}
+
+/* Consistent box sizing */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+/* Basic elements */
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--brand-blue);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg {
+  max-width: 100%;
+}
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* Reusable utilities */
+.muted {
+  color: var(--text-muted);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================
+   Split Login Screen Design (Figma Style)
+   ========================================== */
+.login-split-body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-card-wrapper {
+    display: flex;
+    width: 900px;
+    max-width: 95%;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.login-left-panel {
+    flex: 1;
+    background: #f1f5f9;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-right: 1px solid #e2e8f0;
+}
+
+.welcome-vector-art {
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 1.5rem;
+}
+
+.login-left-panel h2 {
+    font-size: 1.35rem;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+}
+
+.login-left-panel p {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.login-right-panel {
+    flex: 1;
+    padding: 3.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.portal-main-title {
+    font-size: 1.75rem;
+    color: #0284c7;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.clean-login-form .form-group {
+    margin-bottom: 1.25rem;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.field-icon {
+    position: absolute;
+    left: 14px;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.clean-input-control {
+    width: 100%;
+    padding: 0.85rem 1rem 0.85rem 3rem;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1e293b;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.clean-input-control:focus {
+    outline: none;
+    border-color: #0284c7;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.btn-pill-login {
+    width: 100%;
+    padding: 0.9rem;
+    background: #0284c7;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    transition: background 0.2s ease, transform 0.1s ease;
+    margin-top: 1rem;
+}
+
+.btn-pill-login:hover {
+    background: #0369a1;
+}
+
+/* Role Switcher Tabs */
+.role-switcher-tabs {
+    display: flex;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 50px;
+    margin-bottom: 1.75rem;
+    gap: 4px;
+}
+
+.role-tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.role-tab.active {
+    background: #ffffff;
+    color: #0284c7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.role-tab:hover:not(.active) {
+    color: #1e293b;
+}
+
+/* Demo quick buttons */
+.demo-quick-access {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.demo-hint {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.demo-buttons-row {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.btn-demo-pill {
+    padding: 0.4rem 0.85rem;
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-demo-pill:hover {
+    background: #bae6fd;
+}
+
+.alert-error {
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+}
+
+/* ==========================================
+   HCM Lite — Elite SaaS Sidebar Styling
+   ========================================== */
+.sidebar, .app-sidebar, aside {
+    background: #090e17 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.sidebar nav a, 
+.sidebar-nav-item, 
+aside a {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.75rem 1rem;
+    color: #94a3b8;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 0.35rem;
+    position: relative;
+}
+
+.sidebar nav a:hover, 
+.sidebar-nav-item:hover, 
+aside a:hover {
+    color: #f8fafc;
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateX(2px);
+}
+
+.sidebar nav a.active, 
+.sidebar-nav-item.active, 
+aside a.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(79, 70, 229, 0.25));
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+    font-weight: 600;
+}
+
+.sidebar nav a svg, 
+.sidebar-nav-item svg, 
+aside a svg {
+    width: 18px;
+    height: 18px;
+    color: #64748b;
+    transition: color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.sidebar nav a:hover svg, 
+.sidebar-nav-item:hover svg, 
+aside a:hover svg {
+    color: #38bdf8;
+}
+
+.sidebar nav a.active svg, 
+.sidebar-nav-item.active svg, 
+aside a.active svg {
+    color: #818cf8;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-brand h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.sidebar-brand p {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Congratulations Overlay Modal */
+.congrats-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center; z-index: 9999;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.congrats-overlay.active { opacity: 1; pointer-events: auto; }
+.congrats-card {
+    background: #1e293b; border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 20px;
+    padding: 2.5rem; text-align: center; max-width: 380px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    color: #fff;
+}
+.congrats-icon-wrap {
+    width: 64px; height: 64px; background: rgba(16, 185, 129, 0.15); color: #34d399;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;
+}
+.badge { display: inline-block; padding: 0.25rem 0.75rem; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; }
+.badge-indigo { background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+
+.loading-bar {
+    width: 100%; height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 2px; margin-top: 1.5rem; overflow: hidden;
+}
+.loading-progress {
+    width: 100%; height: 100%; background: linear-gradient(90deg, #6366f1, #34d399);
+    transform: translateX(-100%); animation: progressAnim 1.5s linear forwards;
+}
+@keyframes progressAnim {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0%); }
+}
+
+@media (max-width: 768px) {
+    .login-card-wrapper { flex-direction: column; width: 100%; margin: 1rem; }
+    .login-left-panel { display: none; }
+    .login-right-panel { padding: 2rem; }
+}

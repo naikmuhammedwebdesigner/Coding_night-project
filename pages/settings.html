@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings & Company Profile | HCM Lite</title>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <main class="container settings-page">
+
+    <header class="settings-header">
+      <div>
+        <p class="settings-eyebrow">HCM LITE / CONFIGURATION</p>
+        <h1>Settings & Company Profile</h1>
+        <p class="muted">Configure your organization and personalize your HR workspace.</p>
+      </div>
+
+      <button class="btn btn-secondary" id="theme-toggle" type="button">
+        <i data-lucide="moon"></i> Toggle theme
+      </button>
+    </header>
+
+    <nav class="settings-nav" aria-label="Main navigation">
+      <a href="admin.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+      <a href="employees.html"><i data-lucide="users"></i> Employees</a>
+      <a href="employee.html"><i data-lucide="clock"></i> Attendance</a>
+      <a href="leaves.html"><i data-lucide="calendar-off"></i> Leave Management</a>
+      <a href="payslip.html"><i data-lucide="receipt"></i> Payroll</a>
+      <a href="settings.html" aria-current="page"><i data-lucide="settings"></i> Settings</a>
+    </nav>
+
+    <div class="settings-layout">
+
+      <aside class="card settings-sidebar">
+        <p class="settings-sidebar-label">WORKSPACE</p>
+        <a href="#company-section" class="settings-side-link active"><i data-lucide="building"></i> Company Profile</a>
+        <a href="#attendance-section" class="settings-side-link"><i data-lucide="clock"></i> Attendance Rules</a>
+        <a href="#preferences-section" class="settings-side-link"><i data-lucide="sliders"></i> Preferences</a>
+        <a href="#backup-section" class="settings-side-link"><i data-lucide="shield"></i> Data Backup</a>
+      </aside>
+
+      <div class="settings-content">
+
+        <section class="card settings-panel" id="company-section">
+          <div class="settings-panel-heading">
+            <div>
+              <h2>Company Profile</h2>
+              <p class="muted">Manage the identity and contact information of your organization.</p>
+            </div>
+            <span class="settings-icon"><i data-lucide="building"></i></span>
+          </div>
+
+          <form id="company-form">
+            <div class="settings-form-grid">
+              <div class="form-group">
+                <label class="form-label" for="company-name">Company name *</label>
+                <input class="form-control" id="company-name" name="companyName" type="text" maxlength="100" required placeholder="e.g. HCM Lite">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="company-email">Contact email</label>
+                <input class="form-control" id="company-email" name="companyEmail" type="email" maxlength="150" placeholder="hr@company.com">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="company-phone">Contact number</label>
+                <input class="form-control" id="company-phone" name="companyPhone" type="tel" maxlength="30" placeholder="+92 ...">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="company-address">Office address</label>
+                <input class="form-control" id="company-address" name="companyAddress" type="text" maxlength="200" placeholder="City, office address">
+              </div>
+            </div>
+
+            <div class="settings-form-actions">
+              <button class="btn btn-primary" type="submit">Save Company Profile</button>
+              <span class="settings-message" id="company-message" role="status"></span>
+            </div>
+          </form>
+        </section>
+
+        <section class="card settings-panel" id="attendance-section">
+          <div class="settings-panel-heading">
+            <div>
+              <h2>Attendance Rules</h2>
+              <p class="muted">Set the default office schedule and lateness grace period.</p>
+            </div>
+            <span class="settings-icon"><i data-lucide="clock"></i></span>
+          </div>
+
+          <form id="attendance-settings-form">
+            <div class="settings-form-grid">
+              <div class="form-group">
+                <label class="form-label" for="office-start">Office start time *</label>
+                <input class="form-control" id="office-start" type="time" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="grace-period">Late grace period (minutes) *</label>
+                <input class="form-control" id="grace-period" type="number" min="0" max="180" step="1" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="working-days">Working days per month *</label>
+                <input class="form-control" id="working-days" type="number" min="1" max="31" step="1" required>
+              </div>
+            </div>
+
+            <div class="settings-form-actions">
+              <button class="btn btn-primary" type="submit">Save Attendance Rules</button>
+              <span class="settings-message" id="attendance-message" role="status"></span>
+            </div>
+          </form>
+        </section>
+
+        <section class="card settings-panel" id="preferences-section">
+          <div class="settings-panel-heading">
+            <div>
+              <h2>Preferences</h2>
+              <p class="muted">Personalize the appearance of your workspace.</p>
+            </div>
+            <span class="settings-icon"><i data-lucide="palette"></i></span>
+          </div>
+
+          <div class="settings-preference-row">
+            <div>
+              <h3>Dark mode</h3>
+              <p class="muted">Use a darker interface for your workspace.</p>
+            </div>
+            <label class="settings-switch">
+              <input id="dark-mode-setting" type="checkbox">
+              <span class="settings-switch-track"></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="card settings-panel" id="backup-section">
+          <div class="settings-panel-heading">
+            <div>
+              <h2>Data Backup & Restore</h2>
+              <p class="muted">Export your local records or restore a backup file.</p>
+            </div>
+            <span class="settings-icon"><i data-lucide="shield"></i></span>
+          </div>
+
+          <div class="settings-backup-actions">
+            <button class="btn btn-primary" id="export-backup" type="button">
+              <i data-lucide="download"></i> Export Backup (JSON)
+            </button>
+
+            <label class="btn btn-secondary settings-import-label" for="import-backup">
+              <i data-lucide="upload"></i> Import Backup (JSON)
+            </label>
+            <input id="import-backup" type="file" accept=".json,application/json" hidden>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <footer class="settings-footer muted">
+      HCM Lite · Workspace configuration
+    </footer>
+
+  </main>
+
+  <script src="../js/Auth.js"></script>
+  <script>auth.requireAuth('admin');</script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/settings.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

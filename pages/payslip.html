@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll & Payslips | HCM Lite</title>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <div class="container payroll-page">
+    <header class="payroll-header">
+      <div>
+        <p class="payroll-eyebrow">HCM LITE / FINANCE</p>
+        <h1>Payroll & Payslips</h1>
+        <p class="muted">Manage salaries, deductions and monthly payments.</p>
+      </div>
+      <button class="btn btn-secondary" id="theme-toggle" type="button">
+        <i data-lucide="moon"></i> Toggle theme
+      </button>
+    </header>
+
+    <nav class="payroll-nav" aria-label="Main navigation">
+      <a href="admin.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+      <a href="employees.html"><i data-lucide="users"></i> Employees</a>
+      <a href="employee.html"><i data-lucide="clock"></i> Attendance</a>
+      <a href="leaves.html"><i data-lucide="calendar-off"></i> Leave Management</a>
+      <a href="payslip.html" aria-current="page"><i data-lucide="receipt"></i> Payroll</a>
+      <a href="settings.html"><i data-lucide="settings"></i> Settings</a>
+    </nav>
+
+    <section class="payroll-toolbar">
+      <div>
+        <label class="form-label" for="payroll-month">Payroll month</label>
+        <input class="form-control" type="month" id="payroll-month" required>
+      </div>
+      <button class="btn btn-primary" id="create-payroll-button" type="button">
+        <i data-lucide="plus"></i> Create Payroll
+      </button>
+    </section>
+
+    <section class="payroll-stats" aria-label="Payroll summary">
+      <article class="card payroll-stat">
+        <span class="muted">Total Payroll</span>
+        <h2 id="payroll-total">PKR 0</h2>
+        <p class="muted">For selected month</p>
+      </article>
+
+      <article class="card payroll-stat">
+        <span class="muted">Employees Paid</span>
+        <h2 id="payroll-paid-count">0</h2>
+        <p class="muted">Payments marked paid</p>
+      </article>
+
+      <article class="card payroll-stat">
+        <span class="muted">Pending Payments</span>
+        <h2 id="payroll-pending-count">0</h2>
+        <p class="muted">Awaiting payment</p>
+      </article>
+
+      <article class="card payroll-stat">
+        <span class="muted">Average Net Salary</span>
+        <h2 id="payroll-average">PKR 0</h2>
+        <p class="muted">Per payroll record</p>
+      </article>
+    </section>
+
+    <section class="card payroll-table-card">
+      <div class="payroll-section-heading">
+        <div>
+          <h2>Monthly Salary Records</h2>
+          <p class="muted">Review salary calculations and payment status.</p>
+        </div>
+        <input class="form-control payroll-search" id="payroll-search" type="search" placeholder="Search employee...">
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th>Basic Salary</th>
+              <th>Allowances</th>
+              <th>Deductions</th>
+              <th>Net Salary</th>
+              <th>Payment Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="payroll-table-body"></tbody>
+        </table>
+      </div>
+
+      <div class="empty-state" id="payroll-empty">
+        <h3>No payroll records yet</h3>
+        <p>Create payroll for your employees to see their monthly salary records here.</p>
+        <button class="btn btn-primary" id="payroll-empty-create" type="button">Create first payroll</button>
+      </div>
+    </section>
+
+    <p class="payroll-footer muted">
+      HCM Lite · Payroll records are stored locally in this browser.
+    </p>
+  </div>
+
+  <script src="../js/Auth.js"></script>
+  <script>auth.requireAuth('admin');</script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/payslip.js"></script>
+  <script src="../js/theme.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

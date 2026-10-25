@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCM Lite — Sign In</title>
+    <!-- Google Fonts for elite SaaS typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="login-split-body">
+
+    <div class="login-card-wrapper">
+        <!-- Left Illustration & Branding Panel -->
+        <div class="login-left-panel">
+            <div class="illustration-content">
+                <div class="welcome-vector-art">
+                    <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="200" cy="175" r="140" fill="#E0F2FE"/>
+                        <path d="M140 220L110 280H130L150 220H140Z" fill="#0284C7"/>
+                        <circle cx="135" cy="130" r="22" fill="#FDBA74"/>
+                        <path d="M115 150C115 135 130 120 150 135C155 140 160 155 150 170H120C115 160 115 155 115 150Z" fill="#EF4444"/>
+                        <path d="M250 200L240 290H265L275 200H250Z" fill="#10B981"/>
+                        <circle cx="260" cy="120" r="20" fill="#FDBA74"/>
+                        <path d="M245 140C245 125 260 115 275 125C280 130 280 145 275 160H250C245 150 245 145 245 140Z" fill="#0F766E"/>
+                        <rect x="80" y="80" width="30" height="20" rx="4" transform="rotate(-15 80 80)" fill="#38BDF8"/>
+                        <rect x="290" y="90" width="35" height="25" rx="4" transform="rotate(20 290 90)" fill="#F43F5E"/>
+                        <circle cx="310" cy="220" r="8" fill="#FACC15"/>
+                        <circle cx="90" cy="240" r="6" fill="#A855F7"/>
+                    </svg>
+                </div>
+                <h2>HCM Lite Workspace</h2>
+                <p>Manage your human resources, attendance, leaves, and payroll seamlessly with modern tools.</p>
+            </div>
+        </div>
+
+        <!-- Right Form Panel -->
+        <div class="login-right-panel">
+            <div class="login-form-container">
+                <h1 id="portalHeading" class="portal-main-title">EMPLOYEE LOGIN</h1>
+
+                <!-- Top Role Switcher Tabs -->
+                <div class="role-switcher-tabs">
+                    <button type="button" class="role-tab active" data-role="employee">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: -2px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        Employee Portal
+                    </button>
+                    <button type="button" class="role-tab" data-role="admin">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: -2px;"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Admin Portal
+                    </button>
+                </div>
+
+                <div id="loginError" class="alert-error" style="display: none;"></div>
+
+                <form id="loginForm" class="clean-login-form">
+                    <!-- Hidden input to hold active selected role -->
+                    <input type="hidden" id="role" value="employee">
+
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <span class="field-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            </span>
+                            <input type="email" id="email" class="clean-input-control" placeholder="Email Address" required autocomplete="email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <span class="field-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            </span>
+                            <input type="password" id="password" class="clean-input-control" placeholder="Password" required autocomplete="current-password">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-pill-login">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: -3px;"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                        LOG IN
+                    </button>
+                </form>
+
+                <div class="demo-quick-access">
+                    <span class="demo-hint">Quick Demo Credentials:</span>
+                    <div class="demo-buttons-row">
+                        <button type="button" class="btn-demo-pill demo-fill-btn" data-role="employee">Fill Employee</button>
+                        <button type="button" class="btn-demo-pill demo-fill-btn" data-role="admin">Fill Admin</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Congratulations Success Overlay Modal -->
+    <div id="congratsOverlay" class="congrats-overlay">
+        <div class="congrats-card">
+            <div class="congrats-icon-wrap">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2>Congratulations!</h2>
+            <p>Welcome back, <span id="welcomeUserName">User</span>.</p>
+            <span id="welcomeUserRole" class="badge badge-indigo">Workspace Ready</span>
+            <div class="loading-bar"><div class="loading-progress"></div></div>
+        </div>
+    </div>
+
+    <script src="js/Auth.js"></script>
+</body>
+</html>

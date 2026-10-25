@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>People Studio | HCM Lite</title>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <main class="people-page">
+
+    <nav class="people-topbar">
+      <a class="brand" href="admin.html">
+        <span class="brand-mark">H</span>
+        <span><strong>HCM Lite</strong><small>People Studio</small></span>
+      </a>
+      <div class="people-top-actions">
+        <span class="status status-present">● Workspace</span>
+        <a class="btn btn-secondary" href="admin.html"><i data-lucide="arrow-left"></i> Dashboard</a>
+      </div>
+    </nav>
+
+    <section class="people-content">
+      <div class="people-heading">
+        <div>
+          <p class="eyebrow">YOUR PEOPLE, ONE PLACE</p>
+          <h1>People Studio<span class="heading-dot">.</span></h1>
+          <p class="muted">Build your team. Keep every detail in sync.</p>
+        </div>
+        <button class="btn btn-primary" id="show-form-button" type="button">
+          <i data-lucide="user-plus"></i> Add new person
+        </button>
+      </div>
+
+      <section class="people-stats">
+        <article class="card people-stat">
+          <span class="people-stat-icon blue"><i data-lucide="users"></i></span>
+          <p class="muted">Total people</p>
+          <h2 id="total-people">0</h2>
+          <small>Registered team members</small>
+        </article>
+        <article class="card people-stat">
+          <span class="people-stat-icon teal"><i data-lucide="building-2"></i></span>
+          <p class="muted">Departments</p>
+          <h2 id="total-departments">0</h2>
+          <small>Unique departments</small>
+        </article>
+        <article class="card people-stat">
+          <span class="people-stat-icon purple"><i data-lucide="sparkles"></i></span>
+          <p class="muted">New this month</p>
+          <h2 id="new-this-month">0</h2>
+          <small>Recently added members</small>
+        </article>
+      </section>
+
+      <section class="card people-form-card" id="employee-form-panel" hidden>
+        <div class="people-section-heading">
+          <div>
+            <p class="eyebrow">TEAM DIRECTORY</p>
+            <h2>Add a team member</h2>
+          </div>
+          <button class="btn btn-secondary" id="hide-form-button" type="button">Close</button>
+        </div>
+
+        <form id="employee-form" class="people-form">
+          <div class="form-group">
+            <label class="form-label" for="employee-name">Full name</label>
+            <input class="form-control" id="employee-name" name="name" required maxlength="100" placeholder="e.g. Ayesha Khan">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="employee-email">Work email</label>
+            <input class="form-control" id="employee-email" name="email" type="email" required maxlength="150" placeholder="name@company.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="employee-department">Department</label>
+            <input class="form-control" id="employee-department" name="department" required maxlength="80" placeholder="e.g. Design">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="employee-salary">Monthly salary</label>
+            <input class="form-control" id="employee-salary" name="salary" type="number" min="0" step="0.01" required placeholder="Enter salary">
+          </div>
+
+          <div class="people-form-footer">
+            <p id="form-message" class="muted" role="status"></p>
+            <button class="btn btn-primary" type="submit">Save person <i data-lucide="check"></i></button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card people-directory">
+        <div class="people-section-heading">
+          <div>
+            <p class="eyebrow">THE DIRECTORY</p>
+            <h2>Your team</h2>
+            <p class="muted">Search and organise your people.</p>
+          </div>
+          <span class="people-count" id="employee-count">0 people</span>
+        </div>
+
+        <div class="people-toolbar">
+          <div class="people-search">
+            <i data-lucide="search"></i>
+            <input id="employee-search" type="search" aria-label="Search employees" placeholder="Search by name, email or department...">
+          </div>
+
+          <select id="department-filter" class="form-control" aria-label="Filter by department">
+            <option value="">All departments</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table people-table">
+            <thead>
+              <tr>
+                <th>TEAM MEMBER</th>
+                <th>DEPARTMENT</th>
+                <th>MONTHLY SALARY</th>
+                <th>ADDED</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody id="employee-table-body"></tbody>
+          </table>
+        </div>
+
+        <div class="people-empty" id="employee-empty" hidden>
+          <div class="people-empty-icon"><i data-lucide="users"></i></div>
+          <h3 id="empty-title">Your people space is ready</h3>
+          <p id="empty-description" class="muted">Add your first team member to start building your directory.</p>
+          <button class="btn btn-primary" id="empty-add-button" type="button">Add first person</button>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        HCM Lite · People Management
+      </footer>
+    </section>
+  </main>
+
+  <script src="../js/Auth.js"></script>
+  <script>auth.requireAuth('admin');</script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/employees.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+
+/* HCM Lite — Reusable UI components */
+
+.container {
+  width: min(100% - 32px, 1600px);
+  margin-inline: auto;
+}
+
+.card {
+  padding: 20px;
+  min-width: 0;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.card-header h2,
+.card-header h3 {
+  margin: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 40px;
+  padding: 9px 15px;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+
+  font-weight: 600;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--brand-blue);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
+
+.btn-secondary {
+  background: var(--surface-raised);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  background: var(--bg);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.form-control {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+
+  color: var(--text);
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 4px 10px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.status-present,
+.status-approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-late,
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-absent,
+.status-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-leave {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+[data-theme="dark"] .status-present,
+[data-theme="dark"] .status-approved {
+  background: #123b2a;
+  color: #86efac;
+}
+
+[data-theme="dark"] .status-late,
+[data-theme="dark"] .status-pending {
+  background: #473414;
+  color: #fcd34d;
+}
+
+[data-theme="dark"] .status-absent,
+[data-theme="dark"] .status-rejected {
+  background: #471f28;
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .status-leave {
+  background: #1d3157;
+  color: #bfdbfe;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table th {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.data-table tbody tr:hover {
+  background: var(--bg);
+}
+
+.empty-state {
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--text-muted);
+}

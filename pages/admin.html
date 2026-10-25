@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HCM Lite human resources dashboard">
+  <title>Admin Dashboard | HCM Lite</title>
+
+  <!-- Lucide SVG Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <aside class="sidebar">
+      <a class="brand" href="admin.html">
+        <span class="brand-mark" aria-hidden="true">H</span>
+        <span>
+          <strong>HCM Lite</strong>
+          <small>People · Presence · Progress</small>
+        </span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Admin navigation">
+        <a class="nav-link active" href="admin.html" aria-current="page">
+          <i data-lucide="layout-dashboard"></i> Dashboard
+        </a>
+        <a class="nav-link" href="employees.html">
+          <i data-lucide="users"></i> Employees
+        </a>
+        <a class="nav-link" href="employee.html">
+          <i data-lucide="clock"></i> Attendance / Employee
+        </a>
+        <a class="nav-link" href="leaves.html">
+          <i data-lucide="calendar-off"></i> Leave Requests
+        </a>
+        <a class="nav-link" href="payslip.html">
+          <i data-lucide="receipt"></i> Payslips
+        </a>
+        <a class="nav-link" href="settings.html">
+          <i data-lucide="settings"></i> Company Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p>HCM Lite <span class="muted">v1.0</span></p>
+        <button class="btn btn-secondary" id="logout-button" type="button" onclick="auth.logout()">
+          <i data-lucide="log-out"></i> Log out
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">HUMAN CAPITAL MANAGEMENT</p>
+          <p class="topbar-title">Admin workspace</p>
+        </div>
+
+        <button class="btn btn-secondary" id="theme-toggle" type="button" aria-label="Switch theme">
+          <i data-lucide="moon"></i> Dark mode
+        </button>
+      </header>
+
+      <section class="page-content">
+        <div class="welcome-row">
+          <div>
+            <p class="eyebrow">OVERVIEW</p>
+            <h1>People at a glance</h1>
+            <p class="muted">Your team's attendance and activity, all in one place.</p>
+          </div>
+
+          <a class="btn btn-primary" href="employees.html">
+            <i data-lucide="user-plus"></i> Add employee
+          </a>
+        </div>
+
+        <section class="stats-grid" aria-label="HR summary">
+          <article class="card stat-card">
+            <p class="stat-label">Total employees</p>
+            <p class="stat-value" id="total-employees">—</p>
+            <p class="muted">Registered employees</p>
+          </article>
+
+          <article class="card stat-card">
+            <p class="stat-label">Present today</p>
+            <p class="stat-value" id="present-today">—</p>
+            <p class="muted">Attendance records</p>
+          </article>
+
+          <article class="card stat-card">
+            <p class="stat-label">On leave today</p>
+            <p class="stat-value" id="on-leave-today">—</p>
+            <p class="muted">Approved leave</p>
+          </article>
+
+          <article class="card stat-card">
+            <p class="stat-label">Late today</p>
+            <p class="stat-value" id="late-today">—</p>
+            <p class="muted">Late check-ins</p>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="card">
+            <div class="card-header">
+              <h2>Today's attendance</h2>
+              <a class="text-link" href="employee.html">View records →</a>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Employee</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Check-in</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="attendance-table-body">
+                  <tr>
+                    <td colspan="4">
+                      <div class="empty-state">
+                        No attendance records yet.<br>
+                        Records will appear when employees check in.
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h2>Smart helper</h2>
+              <span class="status status-leave">Data assistant</span>
+            </div>
+
+            <p class="muted">Ask a question about your company's HR records.</p>
+
+            <div class="helper-messages" id="helper-messages" aria-live="polite">
+              <p>Welcome to HCM Lite. Ask questions about attendance, leaves, or payroll.</p>
+            </div>
+
+            <form id="helper-form">
+              <label class="form-label" for="helper-question">Your question</label>
+              <input class="form-control" id="helper-question" name="question" placeholder="Who is on leave today?" required>
+              <button class="btn btn-primary helper-submit" type="submit">Ask helper</button>
+            </form>
+          </article>
+        </section>
+
+        <footer class="page-footer">
+          HCM Lite · HR Management Platform
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/Auth.js"></script>
+  <script>auth.requireAuth('admin');</script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/theme.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
